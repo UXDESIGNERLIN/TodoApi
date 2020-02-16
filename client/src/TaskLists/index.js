@@ -6,13 +6,24 @@ import React from "react";
 
 class TaskLists extends React.Component {
     state = {
+        fetching:false,
         todos:[]
     }
-    componentDidMount(){
-        console.log("componentdidmount", this.state);
-        fetch('http://localhost:3001/todo').then(res=>res.json()).then(todos => this.setState({todos}, ()=> console.log(this.state))).catch(err => console.log(err))
+
+    fetchData = () => {
+        console.log("fetching")
+        fetch('/todo')
+        .then(res=>res.json())
+        .then(todos => this.setState({todos}))
+        .catch(err => console.log(err))
         
     }
+    /*componentDidMount() {
+        setInterval(() => this.fetchData(), 5000);
+       
+    }*/
+
+    
 
     
     render(){

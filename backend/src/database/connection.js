@@ -7,20 +7,26 @@ const sequelize = new Sequelize('petcare', 'chialing', 'lalala', {
 });
 
 sequelize
-  .authenticate()
+  //.authenticate()
+  .sync()
   .then(() => {
     console.log(`Sequelize connected to mariadb.`);
   })
   .catch(e => console.error(e));
 
 
-  sequelize.define('Task', {
-    id: {
-      type: Sequelize.STRING, primaryKey: true
-    },
-    content: {
-      type:Sequelize.TEXT
-    }
-  })
+  
+ /* await sequelize.sync({ force: true });
+  console.log("All models were synchronized successfully.");*/
+  
+  /*async Task => {
+    const tasRow = await Task.create({ id: uuidv1(), content:"do dishes" });
+    return tasRow
+  }*/
+ 
+  
 
+
+
+  
 module.exports = sequelize;

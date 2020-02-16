@@ -11,7 +11,14 @@ class EnterTodo extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault()
-        console.log("task is submited", this.state.task);
+        console.log("task is submited", JSON.stringify(this.state.task));
+        fetch('http://localhost:3004/todo', 
+            {
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                body:JSON.stringify({content:this.state.task})
+            }).then(res=>res.json()).then(json => console.log(json)).catch(e => console.log("e",e))
+        this.props.submit();
         
     }
     render(){
