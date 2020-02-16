@@ -1,13 +1,13 @@
 import React from "react";
-
-
+import "./style.css"
 
 
 
 class TaskLists extends React.Component {
     state = {
         fetching:false,
-        todos:[]
+        todos:[],
+        name:this.props.name
     }
 
     fetchData = () => {
@@ -18,18 +18,18 @@ class TaskLists extends React.Component {
         .catch(err => console.log(err))
         
     }
-    /*componentDidMount() {
+   
+ /*componentDidMount() {
         setInterval(() => this.fetchData(), 5000);
        
     }*/
-
-    
-
-    
     render(){
         return(
-            <div>
-             {this.state.todos.map(todo => (<p key={todo.id}>{todo.content}</p>))}
+            <div className="todo-list-container">
+              <p>{this.props.time}</p>
+             <h3>{this.props.todo}</h3>
+            
+           
               </div>
              
         );
